@@ -1,28 +1,41 @@
 import getAllNodeVersions from 'all-node-versions'
 import semver from 'semver'
 
-function groupVersions(all) {
-  return all.reduce((versions, version) => {
-    const satisfiesRange = `^${version
-      .split('.')
-      .slice(0, 2)
-      .join('.')}`
+function isSameMajor(current) {
+  return version => version.major === current.major
+}
 
-    if (!versions.some(version => semver.satisfies(version, satisfiesRange))) {
-      versions.push(version)
+function isSameMinor(current) {
+  return version =>
+    version.major === current.major && version.minor === current.minor
+}
+
+function group(versions) {
+  return versions.reduce((result, current) => {
+    const compareFunction =
+      current.major === 0 ? isSameMinor(current) : isSameMajor(current)
+
+    if (!result.some(compareFunction)) {
+      result.push(current)
     }
 
-    return versions
+    return result
   }, [])
 }
 
-async function versions() {
-  return groupVersions(await getAllNodeVersions(), true).filter(
-    version =>
-      version === version[0] ||
-      (semver.satisfies(version, ['^0.10', '^0.12', '>=4'].join('||')) &&
-        Number(version.split('.')[0]) % 2 === 0)
+function recommended(version, index) {
+  return (
+    index === 0 ||
+    (version.major % 2 === 0 &&
+      semver.satisfies(version, ['^0.10', '^0.12', '>=4'].join('||')))
   )
 }
 
-export default versions
+async function getRecommendedVersions() {
+  const all = await getAllNodeVersions()
+  const parsed = all.map(semver.parse)
+  const grouped = group(parsed)
+  return grouped.filter(recommended).map(version => version.version)
+}
+
+export default getRecommendedVersions
