@@ -65,7 +65,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "all-node-versions": "2.0.0",
+    "all-node-versions": "2.2.0",
     "semver": "6.3.0"
   },
   "ava": {
