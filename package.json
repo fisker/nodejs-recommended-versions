@@ -1,7 +1,7 @@
 {
   "name": "nodejs-recommended-versions",
   "description": "Node.js versions you should install",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "repository": "fisker/nodejs-recommended-versions",
