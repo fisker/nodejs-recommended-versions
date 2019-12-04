@@ -58,7 +58,7 @@
     "require": "esm"
   },
   "dependencies": {
-    "all-node-versions": "5.0.1",
+    "all-node-versions": "5.0.2",
     "semver": "6.3.0"
   },
   "devDependencies": {
