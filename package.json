@@ -1,24 +1,66 @@
 {
   "name": "nodejs-recommended-versions",
-  "description": "Node.js versions you should install",
   "version": "1.0.9",
+  "description": "Node.js versions you should install",
+  "homepage": "https://github.com/fisker/nodejs-recommended-versions#readme",
+  "repository": "fisker/nodejs-recommended-versions",
+  "license": "MIT",
+  "author": {
+    "name": "fisker Cheung",
+    "email": "lionkay@gmail.com",
+    "url": "https://www.fiskercheung.com/"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "repository": "fisker/nodejs-recommended-versions",
-  "homepage": "https://github.com/fisker/nodejs-recommended-versions#readme",
-  "license": "MIT",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
+  "scripts": {
+    "build": "run-p build:*",
+    "build:js": "rollup --config",
+    "clean": "run-p clean:*",
+    "clean:dist": "del-cli dist",
+    "dist": "run-p dist:*",
+    "dist:npm": "np --yolo --no-yarn",
+    "format": "run-p format:*",
+    "format:eslint": "yarn lint:eslint --fix",
+    "format:markdown": "yarn lint:markdown --fix",
+    "format:package-json": "sort-package-json \"package.json\" \"packages/*/package.json\"",
+    "format:prettier": "yarn lint:prettier --write",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
+    "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/node_modules/**\"",
+    "lint:package-json": "yarn run format:package-json --check",
+    "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
+    "release": "run-s clean build lint test dist",
+    "test": "ava",
+    "test-coverage": "nyc ava"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "ava": {
+    "require": "esm",
+    "verbose": true
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "require": "esm"
+  },
+  "dependencies": {
+    "all-node-versions": "5.0.1",
+    "semver": "6.3.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
     "@fisker/commitlint-config": "1.1.4",
@@ -38,50 +80,11 @@
     "npm-run-all": "4.1.5",
     "nyc": "14.1.1",
     "prettier": "1.19.1",
-    "rollup": "1.27.8"
+    "rollup": "1.27.8",
+    "sort-package-json": "1.30.0"
   },
-  "scripts": {
-    "build": "run-p build:*",
-    "build:js": "rollup --config",
-    "clean": "run-p clean:*",
-    "clean:dist": "del-cli lib",
-    "dist": "run-p dist:*",
-    "dist:npm": "np --yolo --no-yarn",
-    "format": "run-p format:*",
-    "format:eslint": "yarn lint:eslint --fix",
-    "format:markdown": "yarn lint:markdown --fix",
-    "format:prettier": "yarn lint:prettier --write",
-    "lint": "run-p lint:*",
-    "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
-    "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/node_modules/**\"",
-    "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
-    "release": "run-s clean build lint test dist",
-    "test": "ava",
-    "test-coverage": "nyc ava"
-  },
-  "author": {
-    "name": "fisker Cheung",
-    "email": "lionkay@gmail.com",
-    "url": "https://www.fiskercheung.com/"
-  },
-  "sideEffects": false,
-  "dependencies": {
-    "all-node-versions": "5.0.1",
-    "semver": "6.3.0"
-  },
-  "ava": {
-    "verbose": true,
-    "require": "esm"
-  },
-  "nyc": {
-    "all": true,
-    "require": "esm",
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "include": [
-      "src/**"
-    ]
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
