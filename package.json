@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "all-node-versions": "5.0.2",
-    "semver": "7.0.0"
+    "semver": "7.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
