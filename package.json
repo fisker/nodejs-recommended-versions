@@ -43,19 +43,16 @@
     }
   },
   "ava": {
-    "require": "esm",
+    "require": [
+      "esm"
+    ],
     "verbose": true
   },
   "nyc": {
-    "all": true,
-    "include": [
-      "src/**"
-    ],
     "reporter": [
       "lcov",
       "text"
-    ],
-    "require": "esm"
+    ]
   },
   "dependencies": {
     "all-node-versions": "6.0.0",
