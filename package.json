@@ -3,7 +3,11 @@
   "version": "1.0.15",
   "description": "Node.js versions you should install",
   "homepage": "https://github.com/fisker/nodejs-recommended-versions#readme",
+  "bugs": {
+    "url": "https://github.com/fisker/nodejs-recommended-versions/issues"
+  },
   "repository": "fisker/nodejs-recommended-versions",
+  "funding": "https://github.com/fisker/nodejs-recommended-versions?sponsor=1",
   "license": "MIT",
   "author": {
     "name": "fisker Cheung",
