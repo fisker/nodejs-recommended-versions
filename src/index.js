@@ -2,11 +2,11 @@ import getAllNodeVersions from 'all-node-versions'
 import semver from 'semver'
 
 function isSameMajor(current) {
-  return version => version.major === current.major
+  return (version) => version.major === current.major
 }
 
 function isSameMinor(current) {
-  return version =>
+  return (version) =>
     version.major === current.major && version.minor === current.minor
 }
 
@@ -35,7 +35,7 @@ async function getRecommendedVersions() {
   const all = await getAllNodeVersions()
   const parsed = all.map(semver.parse)
   const grouped = group(parsed)
-  return grouped.filter(recommended).map(version => version.version)
+  return grouped.filter(recommended).map((version) => version.version)
 }
 
 export default getRecommendedVersions
