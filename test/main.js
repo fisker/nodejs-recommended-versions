@@ -8,24 +8,34 @@ test('main', async (t) => {
   t.true(Array.isArray(versions))
 
   t.true(
-    versions.some((version) => version.startsWith('0.10.')),
+    versions.some(({version}) => version.startsWith('0.10.')),
     '0.10.x should be listed'
   )
 
   t.true(
-    versions.some((version) => version.startsWith('0.12.')),
+    versions.some(({version}) => version.startsWith('0.12.')),
     '0.12.x should be listed'
   )
 
   t.true(
     versions
       .slice(1)
-      .every((version) => Number(version.split('.')[0]) % 2 === 0),
+      .every(({version}) => Number(version.split('.')[0]) % 2 === 0),
     'versions except latest should be all even-numbered'
   )
 
   t.true(
-    versions.includes((await getAllNodeVersions())[0]),
-    'latest version should be listed'
+    versions.every(({major}) => typeof major === 'number'),
+    '`version.major` should be number'
   )
+
+  t.true(
+    versions
+      .filter(({major}) => major % 2 === 0 && major)
+      .every(({lts}) => typeof lts === 'string'),
+    'even-numbered versions should be lts'
+  )
+
+  const latestVersion = (await getAllNodeVersions()).versions[0]
+  t.is(versions[0].version, latestVersion, 'latest version should be listed')
 })

@@ -29,8 +29,20 @@ import getRecommendVersions from 'nodejs-recommended-versions'
 ;(async () => {
   const versions = getRecommendVersions()
 
-  console.log(versions)
+  console.table(versions)
 
-  // -> [..., '0.12.18', '0.10.48']
+  // ->
+  // ┌─────────┬───────┬───────────┬───────────┐
+  // │ (index) │ major │  version  │    lts    │
+  // ├─────────┼───────┼───────────┼───────────┤
+  // │    0    │  13   │ '13.13.0' │           │
+  // │    1    │  12   │ '12.16.2' │ 'erbium'  │
+  // │    2    │  10   │ '10.20.1' │ 'dubnium' │
+  // │    3    │   8   │ '8.17.0'  │ 'carbon'  │
+  // │    4    │   6   │ '6.17.1'  │  'boron'  │
+  // │    5    │   4   │  '4.9.1'  │  'argon'  │
+  // │    6    │   0   │ '0.12.18' │           │
+  // │    7    │   0   │ '0.10.48' │           │
+  // └─────────┴───────┴───────────┴───────────┘
 })()
 ```

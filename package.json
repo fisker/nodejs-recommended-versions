@@ -60,8 +60,7 @@
     ]
   },
   "dependencies": {
-    "all-node-versions": "7.0.1",
-    "semver": "7.3.2"
+    "all-node-versions": "8.0.0"
   },
   "devDependencies": {
     "@ava/babel": "1.0.1",
