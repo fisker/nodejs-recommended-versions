@@ -18,20 +18,27 @@ test('main', async (t) => {
   )
 
   t.true(
-    versions
-      .slice(1)
-      .every(({version}) => Number(version.split('.')[0]) % 2 === 0),
-    'versions except latest should be all even-numbered'
-  )
-
-  t.true(
     versions.every(({major}) => typeof major === 'number'),
     '`version.major` should be number'
   )
 
   t.true(
+    versions.every(
+      ({major}, index) => major === 0 || major % 2 === 0 || index === 0
+    ),
+    'versions(except latest) should be even-numbered or `0`'
+  )
+
+  t.true(
     versions
-      .filter(({major}) => major % 2 === 0 && major)
+      .filter(
+        ({major}, index) =>
+          major % 2 === 0 &&
+          // `0.x` is not lts
+          major !== 0 &&
+          // New released even-numbered version is not lts
+          index !== 0
+      )
       .every(({lts}) => typeof lts === 'string'),
     'even-numbered versions should be lts'
   )
