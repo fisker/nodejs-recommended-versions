@@ -33,11 +33,11 @@ import getRecommendVersions from 'nodejs-recommended-versions'
 
   // ->
   // ┌─────────┬───────┬───────────┬───────────┐
-  // │ (index) │ major │  version  │    lts    │
+  // │ (index) │ major │  version  │ codeName  │
   // ├─────────┼───────┼───────────┼───────────┤
-  // │    0    │  13   │ '13.13.0' │           │
-  // │    1    │  12   │ '12.16.2' │ 'erbium'  │
-  // │    2    │  10   │ '10.20.1' │ 'dubnium' │
+  // │    0    │  14   │ '14.5.0'  │           │
+  // │    1    │  12   │ '12.18.2' │ 'erbium'  │
+  // │    2    │  10   │ '10.21.0' │ 'dubnium' │
   // │    3    │   8   │ '8.17.0'  │ 'carbon'  │
   // │    4    │   6   │ '6.17.1'  │  'boron'  │
   // │    5    │   4   │  '4.9.1'  │  'argon'  │
