@@ -1,5 +1,5 @@
 import test from 'ava'
-import getRecommendedVersions from '../src'
+import getRecommendedVersions from '../src/index.mjs'
 import getAllNodeVersions from 'all-node-versions'
 
 test('main', async (t) => {
