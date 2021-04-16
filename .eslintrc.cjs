@@ -10,7 +10,11 @@
 module.exports = {
   root: true,
   env: {},
-  parserOptions: {},
+  parserOptions: {
+    parseOptions: {
+      allowAwaitOutsideFunction: true,
+    },
+  },
   extends: ['@fisker'],
   settings: {},
   rules: {},

@@ -1,6 +1,6 @@
 import test from 'ava'
-import getRecommendedVersions from '../src/index.mjs'
 import getAllNodeVersions from 'all-node-versions'
+import getRecommendedVersions from '../index.js'
 
 test('main', async (t) => {
   const versions = await getRecommendedVersions()
