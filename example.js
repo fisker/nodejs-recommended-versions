@@ -1,3 +1,3 @@
-import getRecommendVersions from 'nodejs-recommended-versions'
+import getRecommendVersions from '.'
 
 console.table(await getRecommendVersions())
