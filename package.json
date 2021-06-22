@@ -56,7 +56,7 @@
     ]
   },
   "dependencies": {
-    "all-node-versions": "8.0.0"
+    "all-node-versions": "9.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "12.1.4",
