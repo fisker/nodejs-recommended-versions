@@ -6,7 +6,7 @@ async function getRecommendedVersions() {
   const recommended = majors
     .filter(({major}, index) => index === 0 || major % 2 === 0)
     .map(({major, latest: version, lts}) =>
-      lts ? {major, version, codeName: lts} : {major, version}
+      lts ? {major, version, codeName: lts} : {major, version},
     )
 
   const legacyVersion = {

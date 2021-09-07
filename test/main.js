@@ -9,24 +9,24 @@ test('main', async (t) => {
 
   t.true(
     versions.some(({version}) => version.startsWith('0.10.')),
-    '0.10.x should be listed'
+    '0.10.x should be listed',
   )
 
   t.true(
     versions.some(({version}) => version.startsWith('0.12.')),
-    '0.12.x should be listed'
+    '0.12.x should be listed',
   )
 
   t.true(
     versions.every(({major}) => typeof major === 'number'),
-    '`version.major` should be number'
+    '`version.major` should be number',
   )
 
   t.true(
     versions.every(
-      ({major}, index) => major === 0 || major % 2 === 0 || index === 0
+      ({major}, index) => major === 0 || major % 2 === 0 || index === 0,
     ),
-    'versions(except latest) should be even-numbered or `0`'
+    'versions(except latest) should be even-numbered or `0`',
   )
 
   t.true(
@@ -37,10 +37,10 @@ test('main', async (t) => {
           // `0.x` don't has codeName
           major !== 0 &&
           // New released even-numbered version don't has codeName
-          index !== 0
+          index !== 0,
       )
       .every(({codeName}) => typeof codeName === 'string'),
-    'even-numbered versions should has lts codeName'
+    'even-numbered versions should has lts codeName',
   )
 
   const latestVersion = (await getAllNodeVersions()).versions[0]
