@@ -30,17 +30,14 @@ test('main', async (t) => {
   )
 
   t.true(
-    versions
-      .filter(
-        ({major}, index) =>
-          major % 2 === 0 &&
-          // `0.x` don't has codeName
-          major !== 0 &&
-          // New released even-numbered version don't has codeName
-          index !== 0,
-      )
-      .every(({codeName}) => typeof codeName === 'string'),
-    'even-numbered versions should has lts codeName',
+    versions.some(
+      ({major, codeName}, index) =>
+        major % 2 === 0 &&
+        // `0.x` don't has codeName
+        major !== 0 &&
+        typeof codeName === 'string',
+    ),
+    'There should be some LTS versions',
   )
 
   const latestVersion = (await getAllNodeVersions()).versions[0]
