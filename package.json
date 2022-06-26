@@ -52,7 +52,7 @@
     ]
   },
   "dependencies": {
-    "all-node-versions": "10.0.0"
+    "all-node-versions": "11.0.1"
   },
   "devDependencies": {
     "@fisker/commitlint-config": "2.0.4",
