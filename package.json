@@ -52,7 +52,7 @@
     ]
   },
   "dependencies": {
-    "all-node-versions": "10.0.0"
+    "all-node-versions": "11.0.1"
   },
   "devDependencies": {
     "@fisker/eslint-config": "10.1.4",
@@ -72,9 +72,9 @@
     "prettier": "2.7.1",
     "sort-package-json": "1.57.0"
   },
+  "packageManager": "yarn@3.2.1",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  },
-  "packageManager": "yarn@3.2.1"
+  }
 }

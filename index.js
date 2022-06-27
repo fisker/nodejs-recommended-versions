@@ -11,8 +11,9 @@ async function getRecommendedVersions() {
 
   const legacyVersion = {
     major: 0,
-    version: versions.find((version) => version.startsWith('0.10.')),
+    version: versions.find((version) => version.node.startsWith('0.10.')).node,
   }
+
   return [...recommended, legacyVersion]
 }
 
