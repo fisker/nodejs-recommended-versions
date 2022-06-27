@@ -1,6 +1,6 @@
 {
   "name": "nodejs-recommended-versions",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Node.js versions you should install",
   "homepage": "https://github.com/fisker/nodejs-recommended-versions#readme",
   "bugs": {
