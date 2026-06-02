@@ -40,6 +40,12 @@ test('main', async (t) => {
     'There should be some LTS versions',
   )
 
-  const {versions} = await getAllNodeVersions()
-  t.is(versions[0].version, versions[0].node, 'latest version should be listed')
+  {
+    const {versions} = await getAllNodeVersions()
+    t.is(
+      versions[0].version,
+      versions[0].node,
+      'latest version should be listed',
+    )
+  }
 })
