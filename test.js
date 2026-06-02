@@ -17,23 +17,27 @@ test('main', async (t) => {
     '0.12.x should be listed',
   )
 
-  t.true(
-    versions
-      .slice(1)
-      .every(({version}) => Number(version.split('.')[0]) % 2 === 0),
-    'versions except latest should be all even-numbered',
-  )
-
-  t.true(
+t.true(
     versions.every(({major}) => typeof major === 'number'),
     '`version.major` should be number',
   )
 
   t.true(
-    versions
-      .filter(({major}) => major % 2 === 0 && major > 0 && major < 26)
-      .every(({lts}) => typeof lts === 'string'),
-    'even-numbered versions (4~24) should be lts',
+    versions.every(
+      ({major}, index) => major === 0 || major % 2 === 0 || index === 0,
+    ),
+    'versions(except latest) should be even-numbered or `0`',
+  )
+
+ t.true(
+    versions.some(
+      ({major, codeName}, index) =>
+        major % 2 === 0 &&
+        // `0.x` don't has codeName
+        major !== 0 &&
+        typeof codeName === 'string',
+    ),
+    'There should be some LTS versions',
   )
 
   const latestVersion = (await getAllNodeVersions()).versions[0].node
