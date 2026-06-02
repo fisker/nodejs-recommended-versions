@@ -41,10 +41,10 @@ test('main', async (t) => {
   )
 
   {
-    const {versions} = await getAllNodeVersions()
+    const {versions: allVersions} = await getAllNodeVersions()
     t.is(
       versions[0].version,
-      versions[0].node,
+      allVersions[0].node,
       'latest version should be listed',
     )
   }
