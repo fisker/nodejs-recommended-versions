@@ -4,7 +4,6 @@
 [![Npm Version][package_version_badge]][package_link]
 [![MIT License][license_badge]][license_link]
 
-[github_actions_link]: https://github.com/fisker/nodejs-recommended-versions/actions?query=branch%3Amaster
 [coveralls_badge]: https://img.shields.io/coveralls/github/fisker/nodejs-recommended-versions/master?style=flat-square
 [coveralls_link]: https://coveralls.io/github/fisker/nodejs-recommended-versions?branch=master
 [license_badge]: https://img.shields.io/npm/l/nodejs-recommended-versions.svg?style=flat-square
