@@ -57,6 +57,7 @@
     "@fisker/eslint-config": "15.4.0",
     "@fisker/eslint-config-ava": "4.2.0",
     "@fisker/prettier-config": "5.3.0",
+    "@fisker/release-it-config": "6.0.2",
     "ava": "8.0.1",
     "c8": "11.0.0",
     "del-cli": "7.0.0",
