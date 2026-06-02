@@ -4,16 +4,15 @@ async function getRecommendedVersions() {
   const {versions, majors} = await getAllNodeVersions()
 
   const recommended = majors
-    .filter(({major}, index) => index === 0 || major % 2 === 0)
+    .filter(({major}, index) => major>=26||(index === 0 || major % 2 === 0))
     .map(({major, latest: version, lts}) =>
-      lts ? {major, version, codeName: lts} : {major, version},
+      lts ? {major, version, lts} : {major, version}
     )
 
   const legacyVersion = {
     major: 0,
-    version: versions.find((version) => version.node.startsWith('0.10.')).node,
+    version: versions.find(({node: version}) => version.startsWith('0.10.')).node,
   }
-
   return [...recommended, legacyVersion]
 }
 
