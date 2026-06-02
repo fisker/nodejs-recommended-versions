@@ -17,7 +17,7 @@ test('main', async (t) => {
     '0.12.x should be listed',
   )
 
-t.true(
+  t.true(
     versions.every(({major}) => typeof major === 'number'),
     '`version.major` should be number',
   )
@@ -29,7 +29,7 @@ t.true(
     'versions(except latest) should be even-numbered or `0`',
   )
 
- t.true(
+  t.true(
     versions.some(
       ({major, codeName}, index) =>
         major % 2 === 0 &&
