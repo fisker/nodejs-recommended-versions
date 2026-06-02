@@ -1,6 +1,6 @@
-import test from 'ava'
 import getAllNodeVersions from 'all-node-versions'
-import getRecommendedVersions from '../index.js'
+import test from 'ava'
+import getRecommendedVersions from './index.js'
 
 test('main', async (t) => {
   const versions = await getRecommendedVersions()
@@ -40,6 +40,12 @@ test('main', async (t) => {
     'There should be some LTS versions',
   )
 
-  const latestVersion = (await getAllNodeVersions()).versions[0].node
-  t.is(versions[0].version, latestVersion, 'latest version should be listed')
+  {
+    const {versions: allVersions} = await getAllNodeVersions()
+    t.is(
+      versions[0].version,
+      allVersions[0].node,
+      'latest version should be listed',
+    )
+  }
 })
